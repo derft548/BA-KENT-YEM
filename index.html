@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akgül Yem | Başkent'in Her Çeşit Kaliteli Yem Markası</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/jpeg" href="SS.jpeg">
+    <style>
+        :root {
+            --primary: #FFD700; /* Altın sarısı */
+            --secondary: #1E3A8A; /* Lacivert */
+            --accent: #E11D48; /* Canlı kırmızı */
+            --light: #F9FAFB;
+            --dark: #222;
+            --shadow: 0 8px 32px rgba(30,58,138,0.10);
+            --transition: all 0.3s cubic-bezier(.4,2,.6,1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #1e3a8a;
+            background: #f9fafb;
+            line-height: 1.6;
+        }
+        body::before {
+            content: none;
+        }
+        @keyframes bgMove {
+            0% { filter: hue-rotate(0deg) brightness(1); }
+            100% { filter: hue-rotate(20deg) brightness(1.08); }
+        }
+        .section-container, .footer-container {
+            background: rgba(255,255,255,0.85);
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            margin-bottom: 32px;
+        }
+        .product-card, .type-card {
+            background: linear-gradient(120deg, #fff 80%, #f1f5f9 100%);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px #ffd70022;
+            border: 2px solid #fff;
+            transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s, border 0.3s;
+        }
+        .product-card:hover, .type-card:hover {
+            transform: scale(1.06) translateY(-10px) rotate(-1deg);
+            box-shadow: 0 20px 48px #ffd70044, 0 8px 32px #1e3a8a22;
+            border: 2px solid #ffd700;
+        }
+        .section-title h2 {
+            font-size: 2.7rem;
+            color: #fffbe6;
+            margin-bottom: 15px;
+            text-shadow: 0 4px 24px #ffd70055, 0 1px 0 #fff;
+            letter-spacing: 1px;
+            background: linear-gradient(90deg, #ffd700 10%, #1e3a8a 90%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .section-title h2, .product-title {
+            font-family: 'Montserrat', sans-serif;
+            color: #FFD700;
+            letter-spacing: 1px;
+        }
+        .product-description, .section-title p {
+            color: #233876;
+            font-size: 0.98rem;
+        }
+        /* Header */
+        header {
+            background: linear-gradient(90deg, #1e3a8a 60%, #ffd700 100%);
+            box-shadow: 0 8px 32px #1e3a8a22;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 18px 0 12px 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo-img {
+            height: 60px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-main {
+            font-family: 'Bebas Neue', cursive, sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: 3px;
+            text-shadow: 0 4px 24px #ffd70099, 0 1px 0 #1e3a8a;
+        }
+        
+        .logo-sub {
+            font-size: 1.1rem;
+            color: var(--primary);
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-top: 3px;
+            text-shadow: 0 2px 8px #ffd70044;
+        }
+        
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            transition: max-height 0.3s;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 8px #1e3a8a55;
+        }
+        
+        nav ul li a:hover {
+            color: #ffd700;
+            text-shadow: 0 2px 8px #ffd70099;
+        }
+        
+        .whatsapp-btn {
+            background: linear-gradient(90deg, #25d366 60%, #ffd700 100%);
+            color: #fff;
+            font-weight: 800;
+            font-size: 1.1rem;
+            box-shadow: 0 2px 8px #ffd70033;
+        }
+        
+        .whatsapp-btn i {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+        
+        .whatsapp-btn:hover {
+            background: linear-gradient(90deg, #ffd700 10%, #25d366 90%);
+            color: #1e3a8a;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            min-height: 600px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #ffd700 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding-top: 110px;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: none;
+        }
+        @keyframes heroBgMove {
+            0% { filter: hue-rotate(0deg) brightness(1); }
+            100% { filter: hue-rotate(30deg) brightness(1.1); }
+        }
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        .hero h1 {
+            font-family: 'Bebas Neue', cursive, sans-serif;
+            font-size: 4.2rem;
+            margin-bottom: 18px;
+            line-height: 1.05;
+            font-weight: 900;
+            letter-spacing: 4px;
+            color: #fff;
+            text-shadow: 0 6px 32px #1e3a8a99, 0 1px 0 #ffd700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+        }
+        .hero h1 .fa-cow, .hero h1 .fa-seedling {
+            color: #ffd700;
+            font-size: 2.8rem;
+            filter: drop-shadow(0 2px 8px #ffd70088);
+        }
+        .hero p {
+            font-size: 1.45rem;
+            margin-bottom: 18px;
+            color: #fff;
+            text-shadow: 0 2px 8px #1e3a8a55;
+            font-weight: 600;
+        }
+        .hero .expert-badge {
+            display: inline-block;
+            background: linear-gradient(90deg, #ffd700 60%, #25d366 100%);
+            color: #1e3a8a;
+            font-weight: 900;
+            font-size: 1.1rem;
+            padding: 8px 22px;
+            border-radius: 30px;
+            margin-bottom: 28px;
+            box-shadow: 0 2px 8px #ffd70055;
+            letter-spacing: 1px;
+            border: 2px solid #fff;
+        }
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 22px;
+        }
+        
+        .btn, .whatsapp-btn, .whatsapp-order {
+            padding: 12px 32px;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 1.15rem;
+            text-decoration: none;
+            border: none;
+            outline: none;
+            background: linear-gradient(90deg, #1e3a8a 0%, #ffd700 100%);
+            color: #102040;
+            box-shadow: 0 4px 16px #1e3a8a33, 0 2px 8px #ffd70033;
+            transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
+            letter-spacing: 1px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn i, .whatsapp-btn i, .whatsapp-order i {
+            margin-right: 10px;
+        }
+        .btn:hover, .whatsapp-btn:hover, .whatsapp-order:hover {
+            background: linear-gradient(90deg, #ffd700 0%, #1e3a8a 100%);
+            color: #fff;
+            box-shadow: 0 8px 32px #ffd70055, 0 2px 8px #1e3a8a33;
+            transform: translateY(-3px) scale(1.04);
+        }
+        .btn-secondary {
+            background: linear-gradient(90deg, #fff 0%, #ffd700 100%);
+            color: #1e3a8a;
+            border: 2px solid #ffd700;
+        }
+        .btn-secondary:hover {
+            background: linear-gradient(90deg, #ffd700 0%, #fff 100%);
+            color: #1e3a8a;
+            border: 2px solid #1e3a8a;
+        }
+        .btn-primary {
+            background: linear-gradient(90deg, #1e3a8a 0%, #ffd700 100%);
+            color: #fff;
+            border: 2px solid #1e3a8a;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(90deg, #ffd700 0%, #1e3a8a 100%);
+            color: #1e3a8a;
+            border: 2px solid #ffd700;
+        }
+        .whatsapp-btn, .whatsapp-order {
+            background: linear-gradient(90deg, #25d366 0%, #ffd700 100%);
+            color: #fff;
+            border: 2px solid #25d366;
+        }
+        .whatsapp-btn:hover, .whatsapp-order:hover {
+            background: linear-gradient(90deg, #ffd700 0%, #25d366 100%);
+            color: #1e3a8a;
+            border: 2px solid #ffd700;
+        }
+        /* Products Section */
+        .products {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.7rem;
+            color: #fffbe6;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 8px rgba(30,58,138,0.08), 0 1px 0 #fff;
+            letter-spacing: 1px;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #233876;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 18px;
+            justify-items: center;
+        }
+        .product-card {
+            max-width: 220px;
+            min-width: 0;
+            margin: 0 auto;
+            padding: 0;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px #1e3a8a22;
+            background: #fff;
+        }
+        .product-card:hover {
+            background: linear-gradient(120deg, #fffbe6 0%, #ffe066 100%);
+            transform: scale(1.06) translateY(-10px) rotate(-1deg);
+            box-shadow: 0 20px 48px #ffd70044, 0 8px 32px #1e3a8a22;
+            border: 2px solid #ffd700;
+        }
+        
+        .product-image {
+            height: 120px;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 10px;
+        }
+        
+        .product-category {
+            color: #ffd700;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .product-title {
+            font-size: 1.1rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 8px;
+        }
+        
+        .product-description {
+            color: #233876;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+        
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .whatsapp-order {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        .whatsapp-order i {
+            margin-right: 8px;
+        }
+        
+        .whatsapp-order:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+        }
+        
+        /* Animal Types */
+        .animal-types {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .type-card {
+            background: linear-gradient(120deg, #fff 80%, #f1f5f9 100%);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(30,58,138,0.08);
+            transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s;
+        }
+        .type-card:hover {
+            transform: scale(1.04) translateY(-8px) rotate(-1deg);
+            box-shadow: 0 16px 40px rgba(30,58,138,0.15);
+        }
+        
+        .type-icon {
+            font-size: 2.7rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            filter: drop-shadow(0 2px 8px #ffd70044);
+        }
+        
+        .type-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #fffbe6;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            background: linear-gradient(120deg, #1e3a8a 80%, #233876 100%);
+            border-radius: 16px 16px 0 0;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fffbe6;
+            margin-bottom: 20px;
+            display: inline-block;
+            text-shadow: 0 2px 8px #ffd70044;
+        }
+        
+        .footer-about p {
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .footer-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links ul li a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links ul li a:hover {
+            color: #ffd700;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                background: #fff;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                width: 180px;
+                box-shadow: 0 4px 16px #1e3a8a22;
+                border-radius: 12px;
+                z-index: 1001;
+            }
+            nav ul.show {
+                display: flex;
+            }
+            .mobile-menu {
+                display: block;
+            }
+            
+            .logo-main {
+                font-size: 1.5rem;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+                flex-direction: column;
+                gap: 8px;
+            }
+            .hero p {
+                font-size: 1.05rem;
+            }
+            .hero .expert-badge {
+                font-size: 0.95rem;
+                padding: 7px 14px;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+        @media (max-width: 600px) {
+            .section-title h2 {
+                font-size: 1.5rem;
+            }
+            .product-title {
+                font-size: 1rem;
+            }
+            .type-icon {
+                font-size: 1.5rem;
+            }
+            .product-card, .type-card, .section-container, .footer-container {
+                border-radius: 12px;
+            }
+            .btn, .whatsapp-btn, .whatsapp-order {
+                font-size: 1rem;
+                padding: 10px 12px;
+            }
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            .product-card {
+                max-width: 98vw;
+            }
+            .product-title {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <div class="logo-img">
+                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="30" cy="30" r="29" fill="white" stroke="#FFD700" stroke-width="2"/>
+                        <path d="M30 12C19.98 12 12 19.98 12 30C12 40.02 19.98 48 30 48C40.02 48 48 40.02 48 30C48 19.98 40.02 12 30 12ZM30 44C21.16 44 14 36.84 14 30C14 23.16 21.16 16 30 16C38.84 16 46 23.16 46 30C46 36.84 38.84 44 30 44Z" fill="#1E3A8A"/>
+                        <path d="M30 18C23.37 18 18 23.37 18 30C18 36.63 23.37 42 30 42C36.63 42 42 36.63 42 30C42 23.37 36.63 18 30 18ZM30 38C25.58 38 22 34.42 22 30C22 25.58 25.58 22 30 22C34.42 22 38 25.58 38 30C38 34.42 34.42 38 30 38Z" fill="#FFD700"/>
+                        <path d="M30 24C26.69 24 24 26.69 24 30C24 33.31 26.69 36 30 36C33.31 36 36 33.31 36 30C36 26.69 33.31 24 30 24Z" fill="#E11D48"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-main">AKGÜL YEM</span>
+                    <span class="logo-sub">BAŞKENT YEM</span>
+                </div>
+            </a>
+            
+            <nav>
+                <ul>
+                    <li><a href="#anasayfa">Ana Sayfa</a></li>
+                    <li><a href="#urunler">Efsanevi Ürünler</a></li>
+                    <li><a href="#cesitler">Yem Çeşitleri</a></li>
+                    <li><a href="#iletisim">Bize Ulaşın</a></li>
+                </ul>
+            </nav>
+            
+            <a href="https://wa.me/905054315002" class="whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> Sipariş Ver
+            </a>
+            
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="anasayfa">
+        <div class="hero-content">
+            <h1><i class="fas fa-cow"></i> Hayvancılığın Gücüne Güç Kat! <i class="fas fa-seedling"></i></h1>
+            <div class="expert-badge">Uzman besiciler tarafından kontrol edilmiştir</div>
+            <p>Başkent'in en kaliteli yemleriyle hayvanlarınızın sağlığını ve verimini zirveye taşıyın.<br>Doğadan ilham alan formüller, uzman üretim ve <b>efsanevi sonuçlar</b> burada!</p>
+            <div class="hero-buttons">
+                <a href="#urunler" class="btn btn-primary">Tüm Ürünleri Keşfet</a>
+                <a href="https://wa.me/905054315002" class="btn btn-secondary" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Hemen Sipariş Ver
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="urunler">
+        <div class="section-container">
+            <div class="section-title">
+                <h2>En Çok Tercih Edilen Yemlerimiz</h2>
+                <p>Hayvanlarınızın sağlığı ve verimi için uzmanlar tarafından önerilen, güvenilir ve kaliteli yem çeşitlerimiz hakkında bilgi alın.</p>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card" style="border: 3px solid #FFD700; box-shadow: 0 0 32px #FFD70055;">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=800&q=80" alt="Toklu Yemi">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">KÜÇÜKBAŞ YEMİ</div>
+                        <h3 class="product-title">Toklu Yemi</h3>
+                        <p class="product-description">Genç erkek koyunlar (toklu) için özel olarak geliştirilmiş, yüksek protein ve enerji içeren Toklu Yemi hakkında detaylı bilgi ve üstün performans için bizimle iletişime geçin.</p>
+                        <div class="product-price">₺1,180 / 25kg</div>
+                        <div class="product-actions">
+                            <button class="whatsapp-order" onclick="window.open('https://wa.me/905054315002?text=Merhaba,%20Toklu%20Yemi%20hakkında%20bilgi%20almak%20istiyorum', '_blank')">
+                                <i class="fab fa-whatsapp"></i> Hemen Sipariş Ver
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80" alt="Buzağı Büyütme Yemi">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">BÜYÜKBAŞ YEMİ</div>
+                        <h3 class="product-title">Buzağı Büyütme Yemi</h3>
+                        <p class="product-description">Buzağıların sağlıklı gelişimi ve hızlı büyümesi için vitamin ve mineral destekli Buzağı Büyütme Yemi hakkında bilgi almak için bize ulaşın.</p>
+                        <div class="product-price">₺1,350 / 25kg</div>
+                        <div class="product-actions">
+                            <button class="whatsapp-order" onclick="window.open('https://wa.me/905054315002?text=Merhaba,%20Buzağı%20Büyütme%20Yemi%20hakkında%20bilgi%20almak%20istiyorum', '_blank')">
+                                <i class="fab fa-whatsapp"></i> Hemen Sipariş Ver
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1589927986089-35812388d1f4?auto=format&fit=crop&w=800&q=80" alt="Sığır Besi Yemi">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">BÜYÜKBAŞ YEMİ</div>
+                        <h3 class="product-title">Sığır Besi Yemi</h3>
+                        <p class="product-description">Yüksek enerjili, besleyici Sığır Besi Yemi hakkında detaylı bilgi ve avantajlar için bizimle iletişime geçin.</p>
+                        <div class="product-price">₺1,250 / 25kg</div>
+                        <div class="product-actions">
+                            <button class="whatsapp-order" onclick="window.open('https://wa.me/905054315002?text=Merhaba,%20Sığır%20Besi%20Yemi%20hakkında%20bilgi%20almak%20istiyorum', '_blank')">
+                                <i class="fab fa-whatsapp"></i> Hemen Sipariş Ver
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=800&q=80" alt="Koyun Yemi">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">KÜÇÜKBAŞ YEMİ</div>
+                        <h3 class="product-title">Koyun Yemi</h3>
+                        <p class="product-description">Koyunlar için yüksek besin değerli Koyun Yemi hakkında bilgi almak ve avantajlarını öğrenmek için bize ulaşın.</p>
+                        <div class="product-price">₺1,150 / 25kg</div>
+                        <div class="product-actions">
+                            <button class="whatsapp-order" onclick="window.open('https://wa.me/905054315002?text=Merhaba,%20Koyun%20Yemi%20hakkında%20bilgi%20almak%20istiyorum', '_blank')">
+                                <i class="fab fa-whatsapp"></i> Hemen Sipariş Ver
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1518715308788-3005759c61d3?auto=format&fit=crop&w=800&q=80" alt="Düve Yemi">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">BÜYÜKBAŞ YEMİ</div>
+                        <h3 class="product-title">Düve Yemi</h3>
+                        <p class="product-description">Genç dişi sığırlar için özel besleyici yem</p>
+                        <div class="product-price">₺1,300 / 25kg</div>
+                        <div class="product-actions">
+                            <button class="whatsapp-order" onclick="window.open('https://wa.me/905054315002?text=Merhaba,%20Düve%20Yemi%20hakkında%20bilgi%20almak%20istiyorum', '_blank')">
+                                <i class="fab fa-whatsapp"></i> Sipariş Ver
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Kuzu Büyütme Yemi">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">KÜÇÜKBAŞ YEMİ</div>
+                        <h3 class="product-title">Kuzu Büyütme Yemi</h3>
+                        <p class="product-description">Kuzuların sağlıklı büyümesi için özel yem</p>
+                        <div class="product-price">₺1,200 / 25kg</div>
+                        <div class="product-actions">
+                            <button class="whatsapp-order" onclick="window.open('https://wa.me/905054315002?text=Merhaba,%20Kuzu%20Büyütme%20Yemi%20hakkında%20bilgi%20almak%20istiyorum', '_blank')">
+                                <i class="fab fa-whatsapp"></i> Sipariş Ver
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1518715308788-3005759c61d3?auto=format&fit=crop&w=800&q=80" alt="Oğlak Yemi">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">KÜÇÜKBAŞ YEMİ</div>
+                        <h3 class="product-title">Oğlak Yemi</h3>
+                        <p class="product-description">Oğlaklar için dengeli ve besleyici yem</p>
+                        <div class="product-price">₺1,200 / 25kg</div>
+                        <div class="product-actions">
+                            <button class="whatsapp-order" onclick="window.open('https://wa.me/905054315002?text=Merhaba,%20Oğlak%20Yemi%20hakkında%20bilgi%20almak%20istiyorum', '_blank')">
+                                <i class="fab fa-whatsapp"></i> Sipariş Ver
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1603314585442-ee3b3c16fbcf?auto=format&fit=crop&w=800&q=80" alt="Tavuk Yemi">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">KANATLI YEMİ</div>
+                        <h3 class="product-title">Tavuk Yemi</h3>
+                        <p class="product-description">Tavuklar için yüksek proteinli yem</p>
+                        <div class="product-price">₺1,050 / 25kg</div>
+                        <div class="product-actions">
+                            <button class="whatsapp-order" onclick="window.open('https://wa.me/905054315002?text=Merhaba,%20Tavuk%20Yemi%20hakkında%20bilgi%20almak%20istiyorum', '_blank')">
+                                <i class="fab fa-whatsapp"></i> Sipariş Ver
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" alt="Yumurta Tavuk Yemi">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">KANATLI YEMİ</div>
+                        <h3 class="product-title">Yumurta Tavuk Yemi</h3>
+                        <p class="product-description">Yumurta verimini artıran özel yem</p>
+                        <div class="product-price">₺1,100 / 25kg</div>
+                        <div class="product-actions">
+                            <button class="whatsapp-order" onclick="window.open('https://wa.me/905054315002?text=Merhaba,%20Yumurta%20Tavuk%20Yemi%20hakkında%20bilgi%20almak%20istiyorum', '_blank')">
+                                <i class="fab fa-whatsapp"></i> Sipariş Ver
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1518715308788-3005759c61d3?auto=format&fit=crop&w=800&q=80" alt="Broyler Yemi">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">KANATLI YEMİ</div>
+                        <h3 class="product-title">Broyler Yemi</h3>
+                        <p class="product-description">Broyler tavuklar için hızlı büyüme yemi</p>
+                        <div class="product-price">₺1,100 / 25kg</div>
+                        <div class="product-actions">
+                            <button class="whatsapp-order" onclick="window.open('https://wa.me/905054315002?text=Merhaba,%20Broyler%20Yemi%20hakkında%20bilgi%20almak%20istiyorum', '_blank')">
+                                <i class="fab fa-whatsapp"></i> Sipariş Ver
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80" alt="Civciv Yemi">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">KANATLI YEMİ</div>
+                        <h3 class="product-title">Civciv Yemi</h3>
+                        <p class="product-description">Civcivler için özel başlangıç yemi</p>
+                        <div class="product-price">₺1,150 / 25kg</div>
+                        <div class="product-actions">
+                            <button class="whatsapp-order" onclick="window.open('https://wa.me/905054315002?text=Merhaba,%20Civciv%20Yemi%20hakkında%20bilgi%20almak%20istiyorum', '_blank')">
+                                <i class="fab fa-whatsapp"></i> Sipariş Ver
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80" alt="Vitamin ve Mineral Katkı">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">KATKI & VİTAMİN</div>
+                        <h3 class="product-title">Vitamin & Mineral Karışımı</h3>
+                        <p class="product-description">Hayvanlarınız için vitamin ve mineral desteği</p>
+                        <div class="product-price">₺950 / 5kg</div>
+                        <div class="product-actions">
+                            <button class="whatsapp-order" onclick="window.open('https://wa.me/905054315002?text=Merhaba,%20Vitamin%20ve%20Mineral%20Karışımı%20hakkında%20bilgi%20almak%20istiyorum', '_blank')">
+                                <i class="fab fa-whatsapp"></i> Sipariş Ver
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Animal Types -->
+    <section class="animal-types" id="cesitler">
+        <div class="section-container">
+            <div class="section-title">
+                <h2>Tüm Yem Çeşitlerimiz</h2>
+                <p>Çiftliğinizin tüm ihtiyaçlarını karşılayacak, uzmanlar tarafından onaylanmış yem seçenekleri hakkında detaylı bilgi alın.</p>
+            </div>
+            
+            <div class="types-grid">
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-cow"></i>
+                    </div>
+                    <h3>Büyükbaş Yemleri</h3>
+                    <p>Sığırlar için yüksek enerjili yemler</p>
+                </div>
+                
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-sheep"></i>
+                    </div>
+                    <h3>Küçükbaş Yemleri</h3>
+                    <p>Koyun ve keçiler için besleyici yemler</p>
+                </div>
+                
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-egg"></i>
+                    </div>
+                    <h3>Kanatlı Yemleri</h3>
+                    <p>Tavuk, hindi ve diğer kanatlılar için yemler</p>
+                </div>
+                
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Yem Katkıları</h3>
+                    <p>Vitamin ve mineral takviyeleri</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="iletisim">
+        <div class="footer-container">
+            <div class="footer-about">
+                <a href="#" class="footer-logo">AKGÜL YEM</a>
+                <p>Hayvanlarınız için en kaliteli yemleri, uzman besiciler kontrolünde ve yılların tecrübesiyle üretiyoruz. Başkent Yem olarak güven, kalite ve verimlilikte öncüyüz.</p>
+                <a href="https://wa.me/905054315002" class="whatsapp-btn" target="_blank" style="width: fit-content; margin-top: 15px;">
+                    <i class="fab fa-whatsapp"></i> WhatsApp'tan Hızlı Sipariş
+                </a>
+            </div>
+            <div class="footer-links">
+                <h3>Hızlı Erişim</h3>
+                <ul>
+                    <li><a href="#anasayfa">Ana Sayfa</a></li>
+                    <li><a href="#urunler">Ürünler</a></li>
+                    <li><a href="#cesitler">Yem Çeşitleri</a></li>
+                    <li><a href="#iletisim">İletişim</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>İletişim Bilgileri</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Başkent OSB, Ankara</li>
+                    <li><i class="fas fa-phone"></i> 0505 431 5002</li>
+                    <li><i class="fas fa-envelope"></i> info@akgulyem.com.tr</li>
+                    <li><i class="fas fa-clock"></i> Pazartesi - Cumartesi: 08:00 - 18:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Akgül Yem - Başkent Yem | Tüm Hakları Saklıdır. Uzman besiciler tarafından kontrol edilmiştir.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('show');
+        });
+        
+        // WhatsApp sipariş butonu
+        function orderViaWhatsapp(productName) {
+            const message = `Merhaba, ${productName} hakkında bilgi almak ve sipariş vermek istiyorum.`;
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/905054315002?text=${encodedMessage}`, '_blank');
+        }
+        
+        // Tüm sipariş butonlarına event listener ekleme
+        document.querySelectorAll('.whatsapp-order').forEach(button => {
+            button.addEventListener('click', function() {
+                const productName = this.closest('.product-card').querySelector('.product-title').textContent;
+                orderViaWhatsapp(productName);
+            });
+        });
+    </script>
+</body>
+</html>
